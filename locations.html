@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locations Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #ccdffc;
+            color: white;
+                background-image: url('b1.jpg');
+                background-size: cover;
+            
+        }
+        h1 {
+            color: rgb(255, 255, 255);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #b6eaf6;
+            color: navy;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d6abf3;
+        }
+        .navbar {
+            background-color: #003366;
+            padding: 10px;
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .navbar li {
+            margin: 0 15px;
+        }
+        
+        .navbar a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="locations.html">Check Locations</a></li>
+        </ul>
+    </nav>
+    <h1>Enter Location Details</h1>
+    <form id="locationForm">
+        <label for="startLocation">Enter Start Location:</label>
+        <input type="text" id="startLocation" required>
+
+        <label for="startCoordinates">Enter Start Coordinates (latitude, longitude):</label>
+        <input type="text" id="startCoordinates" placeholder="e.g., 34.0522,-118.2437" required>
+
+        <label for="destinationLocation">Enter Destination Location:</label>
+        <input type="text" id="destinationLocation" required>
+
+        <label for="destinationCoordinates">Enter Destination Coordinates (latitude, longitude):</label>
+        <input type="text" id="destinationCoordinates" placeholder="e.g., 34.0522,-118.2437" required>
+
+        <label for="cargoType">Enter Type of Cargo (solid, liquid, gas):</label>
+        <input type="text" id="cargoType" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('locationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Get form values
+            const startLocation = document.getElementById('startLocation').value;
+            const startCoordinates = document.getElementById('startCoordinates').value;
+            const destinationLocation = document.getElementById('destinationLocation').value;
+            const destinationCoordinates = document.getElementById('destinationCoordinates').value;
+            const cargoType = document.getElementById('cargoType').value;
+
+            // Store data in local storage
+            localStorage.setItem('startLocation', startLocation);
+            localStorage.setItem('startCoordinates', startCoordinates);
+            localStorage.setItem('destinationLocation', destinationLocation);
+            localStorage.setItem('destinationCoordinates', destinationCoordinates);
+            localStorage.setItem('cargoType', cargoType);
+
+            // Redirect to results page
+            window.location.href = 'results.html';
+        });
+    </script>
+    <footer>
+        <p1>&copy; 2024 Team Human Cyborgs. All rights reserved.</p1>
+    </footer>
+</body>
+</html>

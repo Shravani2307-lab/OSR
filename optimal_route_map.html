@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Route Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #ccdffc;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            background-image: url('b1.jpg');
+            background-size: cover;
+        }
+        h1 {
+            color: rgb(255, 255, 255);
+        }
+        .map-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .map {
+            width: 100%;
+            height: auto;
+            transition: transform 0.2s; /* Smooth zoom effect */
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: navy;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: navy;
+        }
+        .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+        .navbar {
+            background-color: #003366;
+            padding: 10px;
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .navbar li {
+            margin: 0 15px;
+        }
+        
+        .navbar a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            color: #ffffff;
+            text-align: center;
+        }        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="locations.html">Check Locations</a></li>
+        </ul>
+    </nav>
+    <h1>Optimal Route Map</h1>
+    <div class="map-container">
+        <img id="mapImage" class="map" src="map.png" alt="Optimal Route Map">
+    </div>
+
+    <div class="controls">
+        <button onclick="zoomIn()">Zoom In</button>
+        <button onclick="zoomOut()">Zoom Out</button>
+    </div>
+
+    <div class="copyright">
+        &copy; 2024 Human Cyborgs. All rights reserved.
+    </div>
+
+    <script>
+        let scale = 1; // Initial scale
+        const mapImage = document.getElementById('mapImage');
+
+        function zoomIn() {
+            scale += 0.1; // Increase scale
+            updateMapScale();
+        }
+
+        function zoomOut() {
+            if (scale > 0.1) {
+                scale -= 0.1; // Decrease scale
+                updateMapScale();
+            }
+        }
+
+        function updateMapScale() {
+            mapImage.style.transform = `scale(${scale})`;
+        }
+    </script>
+    
+</body>
+</html>

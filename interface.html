@@ -1,0 +1,59 @@
+import tkinter as tk
+from tkinter import messagebox
+from geopy.distance import great_circle
+
+class ShipRoutingApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Ship Routing Interface")
+        
+        # Setup UI components
+        self.setup_ui()
+        
+    def setup_ui(self):
+        # Departure Location
+        tk.Label(self.root, text="Departure Latitude:").grid(row=0, column=0, padx=10, pady=5)
+        tk.Label(self.root, text="Departure Longitude:").grid(row=1, column=0, padx=10, pady=5)
+        self.departure_lat_entry = tk.Entry(self.root)
+        self.departure_lon_entry = tk.Entry(self.root)
+        self.departure_lat_entry.grid(row=0, column=1, padx=10, pady=5)
+        self.departure_lon_entry.grid(row=1, column=1, padx=10, pady=5)
+        
+        # Destination Location
+        tk.Label(self.root, text="Destination Latitude:").grid(row=2, column=0, padx=10, pady=5)
+        tk.Label(self.root, text="Destination Longitude:").grid(row=3, column=0, padx=10, pady=5)
+        self.destination_lat_entry = tk.Entry(self.root)
+        self.destination_lon_entry = tk.Entry(self.root)
+        self.destination_lat_entry.grid(row=2, column=1, padx=10, pady=5)
+        self.destination_lon_entry.grid(row=3, column=1, padx=10, pady=5)
+        
+        # Calculate Button
+        self.calculate_button = tk.Button(self.root, text="Calculate Route", command=self.calculate_route)
+        self.calculate_button.grid(row=4, column=0, columnspan=2, pady=10)
+        
+        # Result Display
+        self.result_label = tk.Label(self.root, text="")
+        self.result_label.grid(row=5, column=0, columnspan=2, pady=10)
+        
+    def calculate_route(self):
+        try:
+            # Get coordinates
+            departure_lat = float(self.departure_lat_entry.get())
+            departure_lon = float(self.departure_lon_entry.get())
+            destination_lat = float(self.destination_lat_entry.get())
+            destination_lon = float(self.destination_lon_entry.get())
+            
+            # Calculate distance
+            departure_coords = (departure_lat, departure_lon)
+            destination_coords = (destination_lat, destination_lon)
+            distance = great_circle(departure_coords, destination_coords).kilometers
+            
+            # Display result
+            self.result_label.config(text=f"Distance: {distance:.2f} km")
+        except ValueError:
+            messagebox.showerror("Input Error", "Please enter valid coordinates.")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = ShipRoutingApp(root)
+    root.mainloop()

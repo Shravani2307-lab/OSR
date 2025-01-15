@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot with FAQ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .chatbot-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .chatbot-button {
+            width: 60px; /* Adjust size as needed */
+            cursor: pointer;
+        }
+
+        .faq-bar {
+            display: none; /* Initially hidden */
+            position: absolute;
+            bottom: 70px; /* Adjust position above the button */
+            right: 0;
+            width: 250px; /* Width of the FAQ box */
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        .faq-item {
+            margin: 10px 0;
+            cursor: pointer;
+            color: blue;
+        }
+
+        .faq-item:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chatbot-container">
+        <img src="bot.png" alt="Chatbot" id="chatbotButton" class="chatbot-button">
+        <div id="faqBar" class="faq-bar">
+            <h4>Frequently Asked Questions</h4>
+            <div class="faq-item">Hello, my name is Anchor. How may I help you?</div>
+            <div class="faq-item">How to go to the...?</div>
+            <div class="faq-item">Who has the copyrights?</div>
+            <div class="faq-item">What are the operating hours?</div>
+            <div class="faq-item">How to contact support?</div>
+        </div>
+    </div>
+
+    <script>
+        const faqBar = document.getElementById('faqBar');
+        const chatbotButton = document.getElementById('chatbotButton');
+
+        chatbotButton.addEventListener('click', function() {
+            // Toggle the visibility of the FAQ bar
+            faqBar.style.display = faqBar.style.display === 'block' ? 'none' : 'block';
+            alert('Hello, my name is Anchor. How may I help you?');
+        });
+
+        // Add click event listeners for each FAQ item
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                alert('You clicked: ' + this.textContent);
+                // You can replace this alert with more relevant actions like showing answers.
+            });
+        });
+    </script>
+</body>
+</html>
