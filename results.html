@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Route</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #ccdffc;
+            color: rgb(255, 255, 255);
+            background-image: url('b1.jpg');
+            background-size: cover;
+        
+        }
+        h1, h2 {
+            color: rgb(255, 255, 255);
+        }
+        .notification {
+            margin-top: 20px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .navbar {
+            background-color: #003366;
+            padding: 10px;
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .navbar li {
+            margin: 0 15px;
+        }
+        
+        .navbar a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="locations.html">Check Locations</a></li>
+        </ul>
+    </nav>
+    <h1>Optimal Route Details</h1>
+
+    <h2>Route Information</h2>
+    <p><strong>Start Location:</strong> <span id="startLocation"></span></p>
+    <p><strong>Start Coordinates:</strong> <span id="startCoordinates"></span></p>
+    <p><strong>Destination Location:</strong> <span id="destinationLocation"></span></p>
+    <p><strong>Destination Coordinates:</strong> <span id="destinationCoordinates"></span></p>
+    <p><strong>Type of Cargo:</strong> <span id="cargoType"></span></p>
+    
+    <h2>Optimal Route Summary</h2>
+    <p><strong>Estimated Distance:</strong> 2979.19 km</p>
+    <p><strong>Estimated Time:</strong> 80.43 hours</p>
+    <p><strong>Safety Score:</strong> 0.96 </p>
+
+    <div class="notification">Map saved as optimal_route_map.html</div>
+
+    <button id="checkMapButton">Check Map</button>
+
+    <script>
+        // Get data from local storage
+        document.getElementById('startLocation').innerText = localStorage.getItem('startLocation');
+        document.getElementById('startCoordinates').innerText = localStorage.getItem('startCoordinates');
+        document.getElementById('destinationLocation').innerText = localStorage.getItem('destinationLocation');
+        document.getElementById('destinationCoordinates').innerText = localStorage.getItem('destinationCoordinates');
+        document.getElementById('cargoType').innerText = localStorage.getItem('cargoType');
+
+        // Redirect to a map (or any desired page) when the button is clicked
+        document.getElementById('checkMapButton').addEventListener('click', function() {
+            window.location.href = 'optimal_route_map.html'; // Change this to your map page URL
+        });
+    </script>
+    <footer>
+        <p1>&copy; 2024 Team Human Cyborgs. All rights reserved.</p1>
+    </footer>
+</body>
+
+</html>
